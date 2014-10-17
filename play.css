@@ -1,13 +1,12 @@
 div.center{    
-	margin-right:auto;
+	margin: 0 auto;
 	background-color:#b0c4de;
 	text-align:center;
 	border:red solid thin;
 
 }
 table{
-	margin-left:auto;
-	margin-right:auto;
+	margin: 0 auto;
 	border-width:2px;
 	border-style:outset;
 	border-collapse: separate;
