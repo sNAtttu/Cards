@@ -16,8 +16,8 @@ class Game {
 		echo 'starting game... <br>';
 		echo 'creating new player... <br>';
 		var_dump($this->player);
-		echo 'creating new deck... <br>';
-
+		echo '<br >creating new deck... <br>';
+		var_dump($this->deck);
 	}
 
 	public function endGame() {
