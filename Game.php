@@ -18,6 +18,14 @@ class Game {
 		var_dump($this->player);
 		echo '<br >creating new deck... <br>';
 		var_dump($this->deck);
+
+		// while isGameRunnable
+			
+			$this->startNewRound();
+	}
+
+	private function startNewRound() {
+		echo '<br >starting a new round... <br>';
 	}
 
 	public function endGame() {

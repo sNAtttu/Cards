@@ -1,6 +1,6 @@
 <?php
 
-include ('game.php');
+include ('Game.php');
 
 $game = new Game('Antti', 100);
 
