@@ -8,12 +8,19 @@ class Deck {
 
 	//constructor
 		// create 52 
+	public function __construct() {
+		$this->cards = $this->createCards();
+	}
 
 	public function shuffleDeck() {
 
 	}
 	
 	private function createCards() {
-		// $this-> cards = jotain :)
+		foreach (unserialize(RANKS) as $rank) {
+			foreach (unserialize(RACES) as $race) {
+				array_push($this->cards, $race .''. $rank);
+			}
+		}
 	}
 }
