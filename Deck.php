@@ -20,10 +20,9 @@ class Deck {
 	
 	private function createCards() {
 		$temp = array();
-		foreach (unserialize(RANKS) as $rank) {
-			foreach (unserialize(RACES) as $race) {
-				array_push($temp, $race .''. $rank);
-			}
+
+		foreach (unserialize(RACES) as $race) {
+			$temp[$race] = range(0,13);
 		}
 		return $temp;
 	}
