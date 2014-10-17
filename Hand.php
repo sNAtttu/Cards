@@ -1,18 +1,20 @@
 <?php
+require ('Card.php');
 
 class Hand{
 	
-	private $cards = array();
+	private $cardsInHand = array();
 	
-	public function getCards($newCard){
-		//$this->cards[index] = $newCard;
-
+	public function getHand(){
+		return $this->cardsInHand;
 	}
 
 	public function setHand($cards) {
-		var_dump($cards);
-		//create card objects
+		foreach ($cards as $card) {
+			foreach ($card as $race => $rank) {
+				$tempCard = new Card($race, $rank);
+				array_push($this->cardsInHand, $tempCard);
+			}
+		}
 	}
-
-	
 }
