@@ -7,7 +7,11 @@ class Game {
 	}
 
 	public function endGame() {
-			
+
+	}
+
+	public function dealHand() {
+		
 	}
 
 	private function isGameRunnable() {
