@@ -22,7 +22,7 @@ class Deck {
 			$tempRank = rand(0,13);
 			$tempCardValue = [$tempRace => $tempRank];
 
-			if (!isCardUsed($tempCardValue)) {
+			if (!$this->isCardUsed($tempCardValue)) {
 				array_push($this->cardsUsed, $tempCardValue);
 				array_push($temp, $tempCardValue);
 
