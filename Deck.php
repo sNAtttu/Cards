@@ -25,6 +25,6 @@ class Deck {
 				array_push($temp, $race .''. $rank);
 			}
 		}
-		$this->cards = $temp;
+		return $temp;
 	}
 }
