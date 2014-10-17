@@ -22,16 +22,19 @@ class Deck {
 			$tempRank = rand(0,13);
 			$tempCardValue = [$tempRace => $tempRank];
 
-			if (!in_array($tempCardValue, $this->cardsUsed)) {
+			if (!isCardUsed($tempCardValue)) {
 				array_push($this->cardsUsed, $tempCardValue);
 				array_push($temp, $tempCardValue);
 
 				if ( sizeof($temp) == 5 ) {
 					return $temp;
-					echo 'exit';
 					break;
 				}
 			}
 		}
+	}
+
+	private function isCardUsed($cardValue) {
+		return in_array($cardValue, $this->cardsUsed);
 	}
 }
