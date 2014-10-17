@@ -3,7 +3,7 @@
 class Player {
 
 	private $identity;
-	private $credits;
+	private $credits = array();
 	
 	public function __construct($newIdentity, $newCredits) {
 		
@@ -19,7 +19,7 @@ class Player {
 	}
 	
 	public function getAccountBalance(){
-		return $this->credits;
+		return array_sum($this->credits);
 	}
 
 	public function spendCredits($amountToSpend) {	
