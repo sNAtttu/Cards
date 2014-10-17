@@ -1,0 +1,18 @@
+div.center{    
+	margin-right:auto;
+	background-color:#b0c4de;
+	text-align:center;
+	border:red solid thin;
+
+}
+table{
+	margin-left:auto;
+	margin-right:auto;
+	border-width:2px;
+	border-style:outset;
+	border-collapse: separate;
+	border-spacing: 10pt 5pt;
+}
+td {
+border-style:outset;
+}
