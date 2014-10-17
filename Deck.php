@@ -16,14 +16,22 @@ class Deck {
 
 	public function dealCards() {
 		$temp = array();
-		for ($i = 0; $i < 5; $i++) {
+
+		while (true) {
 			$tempRace = unserialize(RACES)[rand(0,3)];
 			$tempRank = rand(0,13);
 			$tempCardValue = [$tempRace => $tempRank];
-			$temp[$i] = $tempCardValue;
 
-			array_push($this->cardsUsed, $tempCardValue);
+			if (!in_array($tempCardValue, $this->cardsUsed)) {
+				array_push($this->cardsUsed, $tempCardValue);
+				array_push($temp, $tempCardValue);
+
+				if ( sizeof($temp) == 5 ) {
+					return $temp;
+					echo 'exit';
+					break;
+				}
+			}
 		}
-		return $temp;
 	}
 }

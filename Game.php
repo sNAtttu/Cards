@@ -41,7 +41,7 @@ class Game {
 	}
 
 	private function isGameRunnable() {
-
+		// player has enough money etc?
 		return true;
 	}
 }
