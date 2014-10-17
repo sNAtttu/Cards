@@ -7,7 +7,7 @@ class Deck {
 	private $cards = array();
 
 	public function __construct() {
-		$this->cards = $this->createCards();
+		//$this->cards = $this->createCards();
 	}
 
 	public function shuffleDeck() {
@@ -17,12 +17,16 @@ class Deck {
 	public function getCards() {
 		return $this->cards;
 	}
-	
-	private function createCards() {
-		$temp = array();
 
-		foreach (unserialize(RACES) as $race) {
-			$temp[$race] = range(0,13);
+	public function dealCards() {
+		$temp = array();
+		for ($i = 0; $i < 5; $i++) {
+			$tempRace = unserialize(RACES)[rand(0,3)];
+			$tempRank = rand(0,13);
+			$tempCardValue = [$tempRace => $tempRank];
+			$temp[$i] = $tempCardValue;
+
+			array_push($this->cardsUsed, $tempCardValue);
 		}
 		return $temp;
 	}
