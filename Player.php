@@ -1,6 +1,6 @@
 <?php
 
-class Player{
+class Player {
 
 	private $identity;
 	private $credits;
@@ -25,8 +25,5 @@ class Player{
 	public function __toString(){
 		return "Player name: ". $this->identity ." and his balance: ". $this->credits . " euros.";
 	}
-	
 
 }
-
-?>

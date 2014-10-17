@@ -1,5 +1,5 @@
 <?php 
-include("Card.php");
+require("Card.php");
 
 class picturedCard extends Card{
 	public function __construct($newRank,$newRace){
@@ -17,4 +17,3 @@ class picturedCard extends Card{
 		       $this->getPictureFile();
 	}
 }
-?>

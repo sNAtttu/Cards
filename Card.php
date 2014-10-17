@@ -1,6 +1,6 @@
 <?php
 
-class Card{
+class Card {
 
 	private $race;
 	private $rank;
@@ -17,5 +17,3 @@ class Card{
 		return $this->race;
 	}
 }
-
-?>

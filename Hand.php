@@ -1,9 +1,7 @@
 <?php
 
-class Hand{
+class Hand {
 	
 	private $cards = array();
 	
 }
-
-?>
