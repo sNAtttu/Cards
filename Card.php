@@ -16,4 +16,8 @@ class Card {
 	public function getRace(){
 		return $this->race;
 	}
+
+	public function getCardData() {
+		return "".$this->race."-".$this->rank."";
+	}
 }

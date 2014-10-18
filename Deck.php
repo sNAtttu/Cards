@@ -19,7 +19,7 @@ class Deck {
 
 		while (true) {
 			$tempRace = unserialize(RACES)[rand(0,3)];
-			$tempRank = rand(1,14);
+			$tempRank = rand(1,13);
 			$tempCardValue = [$tempRace => $tempRank];
 
 			if (!$this->isCardUsed($tempCardValue)) {

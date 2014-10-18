@@ -15,6 +15,7 @@ class Game {
 		$this->deck = new Deck();
 		$this->hand = new Hand();
 		$this->bet = 5;
+		$_SESSION['oneHandDealt'] = false;
 	}
 
 	public function startGame() {
@@ -34,9 +35,22 @@ class Game {
 
 	}
 
+	private function handleChangeCards() {
+		$_SESSION['oneHandDealt'] = false;
+		return array('a', 'b');
+	}
+
 	public function startNewRound($bet) {
-		$this->bet = $bet;
-		return $this->hand->getPlayersHand($this->dealHand());
+		if($_SESSION['oneHandDealt'] == true) {
+			return $this->handleChangeCards();
+		} else {
+		
+			$this->bet = $bet;
+			$_SESSION['oneHandDealt'] = true;
+
+			return $this->hand->getPlayersHand($this->dealHand());	
+		}
+		
 		//return '<br >starting a new round... <br>';
 		//$this->hand->setHand($this->dealHand());
 		//do something here

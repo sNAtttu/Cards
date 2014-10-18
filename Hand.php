@@ -16,14 +16,14 @@ class Hand{
 
 	public function getPlayersHand($cards) {
 		$this->setHand($cards);
-		return $this->getHandAsPictures();
+		return array('pictures' => $this->getHandAsPictures(), 'ids' => $this->getHand());
 	}
 
 	private function setHand($cards) {
 		foreach ($cards as $card) {
 			foreach ($card as $race => $rank) {
 				$tempCard = new PicturedCard($race, $rank);
-				array_push($this->cardsInHand, $tempCard);
+				array_push($this->cardsInHand, $tempCard->getCardData());
 				array_push($this->cardsInHandAsPictures, $tempCard->getPictureFile());
 			}
 		}

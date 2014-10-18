@@ -1,3 +1,14 @@
+<?php
+
+require('Game.php');
+session_start();
+
+if(!isset($game)) {
+	$game = new Game('Antti', 100);	
+}
+
+$_SESSION['game'] = serialize($game);
+?>
 <!doctype html>
 
 <html lang="en">

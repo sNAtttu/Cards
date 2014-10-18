@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function() {
   
   $('#bet').val(2);
 
@@ -14,7 +14,7 @@ $(document).ready(function(){
   });
 
   $('#startRoundButton').on('click', function() {
-  	console.log('starting a round');
+  	console.log('starting a round', $('#cardContainer').children());
   	 $.post("game_controller.php",
 	  {
 	    bet: parseInt($('#bet').val()),
@@ -23,8 +23,22 @@ $(document).ready(function(){
 	  function(data,status){
 	  	if(status === 'success') {
 	  		console.log('success, continuing round ' , data)
-	  	}
+          for (var i = 0; i < data.pictures.length; i++ ){
+
+            $('#cardContainer').append('<img src="'+data.pictures[i]+'" data="'+data.ids[i]+'" class="picturedCard" />');
+          }
+	  	} else {
+        console.log(data, status)
+      }
 	  });
   });
+
+   $(document).on("click",".picturedCard",function(){ 
+        var cardData = $(this).attr('data');
+        $(this).toggleClass('chosen');
+        console.log('picture card clicked', cardData)
+    });
+
+  
 
 });
