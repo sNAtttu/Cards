@@ -16,5 +16,7 @@ class Hand{
 				array_push($this->cardsInHand, $tempCard);
 			}
 		}
+		echo 'Player was dealt these cards : <br>';
+		print_r($this->cardsInHand);
 	}
 }

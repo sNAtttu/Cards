@@ -33,7 +33,10 @@ class Game {
 		$this->hand->setHand($this->dealHand());
 		//do something here
 
+		//change player's cards
+		
 		// finally...
+		echo '<br> Checking round winnings: <br>';
 		$this->player->addCredits($this->getRoundWinnings());
 	}
 
