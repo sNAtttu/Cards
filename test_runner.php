@@ -7,18 +7,20 @@
   <link rel="stylesheet" href="play.css?v=1.0">
 </head>
 
-<body>
+<body>	
+	<hr />
  	<div id="gameContainer">
-		moi
+ 		<div id="infoContainer">
+ 			Credits Left:
+ 			Bet amount: 
+ 		</div>
+		<div id="cardContainer"></div>
+		<div id="controlsContainer">
+			<input type="text" name="bet" id="bet" placeholder="bet" disabled/> <button id="changeBetButton">Change bet</button>
+			<button id="startRoundButton" name="startRoundButton">Start</button>
+		</div>
 	</div>
-  <!-- <script src="js/scripts.js"></script> -->
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="scripts.js"></script>
 </body>
-</html><?php
-
-include ('Game.php');
-
-$game = new Game('Antti', 100);
-
-$game->startGame();
-
-?>
+</html>

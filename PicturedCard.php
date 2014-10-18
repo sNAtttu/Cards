@@ -1,7 +1,7 @@
 <?php 
 require("Card.php");
 
-class picturedCard extends Card{
+class PicturedCard extends Card{
 	public function __construct($newRank,$newRace){
 		parent::__construct($newRank,$newRace);
 	}

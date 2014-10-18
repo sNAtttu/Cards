@@ -8,14 +8,17 @@ class Game {
 	private $player;
 	private $deck;
 	private $hand;
+	private $bet;
 
 	public function __construct($playerIdentity, $startingCredits) {
 		$this->player = new Player($playerIdentity, $startingCredits);
 		$this->deck = new Deck();
 		$this->hand = new Hand();
+		$this->bet = 5;
 	}
 
 	public function startGame() {
+		/*
 		echo 'starting game... <br>';
 		echo 'creating new player... <br>';
 		var_dump($this->player);
@@ -26,18 +29,27 @@ class Game {
 
 			$this->startNewRound();
 			echo "<br> yay, player has " . $this->player->getAccountBalance()  . " euros!";
+			*/
+
+
 	}
 
-	private function startNewRound() {
-		echo '<br >starting a new round... <br>';
-		$this->hand->setHand($this->dealHand());
+	public function startNewRound($bet) {
+		$this->bet = $bet;
+		return $this->hand->getPlayersHand($this->dealHand());
+		//return '<br >starting a new round... <br>';
+		//$this->hand->setHand($this->dealHand());
 		//do something here
 
 		//change player's cards
-		
+
 		// finally...
-		echo '<br> Checking round winnings: <br>';
-		$this->player->addCredits($this->getRoundWinnings());
+		//echo '<br> Checking round winnings: <br>';
+		//$this->player->addCredits($this->getRoundWinnings());
+	}
+
+	public function getBetStatus() {
+		return $this->bet;
 	}
 
 	public function endGame() {

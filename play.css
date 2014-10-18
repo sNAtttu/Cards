@@ -25,3 +25,17 @@ border-style:outset;
 	margin: 0 auto;
 	padding: 8px;
 }
+
+#infoContainer {
+	width: 100%;
+	height: 10%;
+}
+#cardContainer {
+	width: 100%;
+	height: 60%;
+}
+
+#controlsContainer {
+	width: 100%;
+	height: 30%;
+}
