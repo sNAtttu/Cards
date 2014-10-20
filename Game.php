@@ -96,6 +96,6 @@ class Game {
 	private function isGameRunnable() {
 		if($this->player->getAccountBalance() > 0) {
 			return true;
-			}
-
+		}
 	}
+}
