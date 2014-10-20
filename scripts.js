@@ -13,12 +13,17 @@ $(function() {
   	 $('#bet').val(newBet);
   });
 
+  var playerChosenCards = [];
+
   $('#startRoundButton').on('click', function() {
+    
+    console.log('chosen cards ' , playerChosenCards)
   	console.log('starting a round', $('#cardContainer').children());
   	 $.post("game_controller.php",
 	  {
 	    bet: parseInt($('#bet').val()),
-	    command: 'startNewRound'
+	    command: 'startNewRound',
+      heldCards: playerChosenCards
 	  },
 	  function(data,status){
 	  	if(status === 'success') {
@@ -35,6 +40,7 @@ $(function() {
 
    $(document).on("click",".picturedCard",function(){ 
         var cardData = $(this).attr('data');
+        playerChosenCards.push(cardData);
         $(this).toggleClass('chosen');
         console.log('picture card clicked', cardData)
     });

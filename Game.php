@@ -37,7 +37,8 @@ class Game {
 
 	private function handleChangeCards() {
 		$_SESSION['oneHandDealt'] = false;
-		return array('a', 'b');
+		
+		//TODO return new cards including the chosen cards
 	}
 
 	public function startNewRound($bet) {
