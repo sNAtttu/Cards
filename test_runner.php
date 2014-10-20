@@ -23,7 +23,7 @@ $_SESSION['game'] = serialize($game);
  	<div id="gameContainer">
  		<div id="infoContainer">
  			Credits Left:
- 			Bet amount: 
+ 		<br>	Bet amount: 
  		</div>
 		<div id="cardContainer"></div>
 		<div id="controlsContainer">
