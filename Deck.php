@@ -11,7 +11,7 @@ class Deck {
 	}
 
 	public function shuffleDeck() {
-
+		$this->cardsUsed = array();
 	}
 
 	public function dealCards($heldCards) {

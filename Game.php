@@ -37,6 +37,7 @@ class Game {
 
 	private function handleChangeCards($heldCards) {
 		$_SESSION['oneHandDealt'] = false;
+		$this->deck->shuffleDeck();
 		return $this->hand->getPlayersHand($this->dealHand($heldCards));
 		//TODO return new cards including the chosen cards
 	}
