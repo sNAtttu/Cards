@@ -22,7 +22,7 @@ class Deck {
 			foreach ($heldCards as $heldCard) {
 
 				$tempSplit = explode("-", $heldCard);
-				$tempCardValue = [$tempSplit[0] => $tempSplit[1]];
+				$tempCardValue = [intval($tempSplit[0]) => intval($tempSplit[1])];
 				array_push($temp, $tempCardValue);
 				array_push($this->cardsUsed, $tempCardValue);
 			}
