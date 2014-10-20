@@ -37,7 +37,6 @@ class Game {
 
 	private function handleChangeCards($heldCards) {
 		$_SESSION['oneHandDealt'] = false;
-		$this->deck->shuffleDeck();
 		return $this->hand->getPlayersHand($this->dealHand($heldCards));
 		//TODO return new cards including the chosen cards
 	}
@@ -46,7 +45,7 @@ class Game {
 		if($_SESSION['oneHandDealt'] == true) {
 			return $this->handleChangeCards($heldCards);
 		} else {
-		
+			$this->deck->shuffleDeck();
 			$this->bet = $bet;
 			$_SESSION['oneHandDealt'] = true;
 

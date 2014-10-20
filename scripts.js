@@ -27,6 +27,7 @@ $(function() {
 	  },
 	  function(data,status){
 	  	if(status === 'success') {
+        playerChosenCards = [];
 	  		console.log('success, continuing round ' , data)
           $('#cardContainer').html('');
           for (var i = 0; i < data.pictures.length; i++ ){
@@ -40,11 +41,11 @@ $(function() {
 
    $(document).on("click",".picturedCard",function(){ 
         var cardData = $(this).attr('data');
-        playerChosenCards.push(cardData);
+        if(playerChosenCards.indexOf(cardData) === -1) {
+          console.log('adding card')
+          playerChosenCards.push(cardData);  
+        }
         $(this).toggleClass('chosen');
         console.log('picture card clicked', cardData)
     });
-
-  
-
 });
