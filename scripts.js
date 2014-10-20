@@ -13,6 +13,15 @@ $(function() {
   	 $('#bet').val(newBet);
   });
 
+  $('#addCredits').on('click',function() {
+	var credits = parseInt($('#credits').val());
+	console.log("You added: "+credits+" euros.");
+	$.post("Player.php",
+		{
+			credits: parseInt($('$credit').val())
+		});
+  });
+
   var playerChosenCards = [];
 
   $('#startRoundButton').on('click', function() {
