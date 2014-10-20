@@ -14,12 +14,25 @@ class Deck {
 
 	}
 
-	public function dealCards() {
+	public function dealCards($heldCards) {
 		$temp = array();
+
+		if(isset($heldCards) && sizeof($heldCards) > 0) {
+
+			foreach ($heldCards as $heldCard) {
+
+				$tempSplit = explode("-", $heldCard);
+				$tempCardValue = [$tempSplit[0] => $tempSplit[1]];
+				array_push($temp, $tempCardValue);
+				array_push($this->cardsUsed, $tempCardValue);
+			}
+		}
+			
 
 		while (true) {
 			$tempRace = unserialize(RACES)[rand(0,3)];
 			$tempRank = rand(1,13);
+
 			$tempCardValue = [$tempRace => $tempRank];
 
 			if (!$this->isCardUsed($tempCardValue)) {

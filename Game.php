@@ -35,21 +35,22 @@ class Game {
 
 	}
 
-	private function handleChangeCards() {
+	private function handleChangeCards($heldCards) {
 		$_SESSION['oneHandDealt'] = false;
-		
+		return $this->dealHand($heldCards);
+		return $this->hand->getPlayersHand($this->dealHand($heldCards));
 		//TODO return new cards including the chosen cards
 	}
 
-	public function startNewRound($bet) {
+	public function startNewRound($bet, $heldCards) {
 		if($_SESSION['oneHandDealt'] == true) {
-			return $this->handleChangeCards();
+			return $this->handleChangeCards($heldCards);
 		} else {
 		
 			$this->bet = $bet;
 			$_SESSION['oneHandDealt'] = true;
 
-			return $this->hand->getPlayersHand($this->dealHand());	
+			return $this->hand->getPlayersHand($this->dealHand(array()));	
 		}
 		
 		//return '<br >starting a new round... <br>';
@@ -88,8 +89,8 @@ class Game {
 		return 0;
 	}
 
-	private function dealHand() {
-		return $this->deck->dealCards();
+	private function dealHand($heldCards) {
+		return $this->deck->dealCards($heldCards);
 	}
 
 	private function isGameRunnable() {
