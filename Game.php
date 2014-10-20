@@ -39,7 +39,7 @@ class Game {
 
 	private function handleChangeCards($heldCards) {
 		$_SESSION['oneHandDealt'] = false;
-		return array('gameData' => $this->hand->getPlayersHand($this->dealHand($heldCards)), 'playerHasChosenCards' => false, 'playerData' => $this->player->getAccountBalance());
+		return array('gameData' => $this->hand->getPlayersHand($this->dealHand($heldCards)), 'playerHasChosenCards' => true, 'playerData' => $this->player->getAccountBalance());
 		//TODO return new cards including the chosen cards
 	}
 

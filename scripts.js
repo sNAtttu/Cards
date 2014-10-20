@@ -13,15 +13,6 @@ $(function() {
   	 $('#bet').val(newBet);
   });
 
-  $('#addCredits').on('click',function() {
-	var credits = parseInt($('#credits').val());
-	console.log("You added: "+credits+" euros.");
-	$.post("Player.php",
-		{
-			credits: parseInt($('$credit').val())
-		});
-  });
-
   var playerChosenCards = [];
 
   $('#startRoundButton').on('click', function() {
@@ -40,7 +31,7 @@ $(function() {
 	  		console.log('success, continuing round ' , data)
          
           for (var i = 0; i < data.gameData.pictures.length; i++ ){
-            $('#cardContainer').append('<img src="'+data.gameData.pictures[i]+'" data="'+data.gameData.ids[i]+'" class="picturedCard" />');
+            $('#cardContainer').append('<img src="'+data.gameData.pictures[i]+'" data="'+data.gameData.ids[i]+'" class="picturedCard '+data.playerHasChosenCards+'" />');
           }
 	  	} else {
         console.log(data, status)
@@ -48,7 +39,7 @@ $(function() {
 	  });
   });
 
-   $(document).on("click",".picturedCard",function(){ 
+   $(document).on("click",".picturedCard.false",function(){ 
         var cardData = $(this).attr('data');
         if(playerChosenCards.indexOf(cardData) === -1) {
           console.log('adding card')

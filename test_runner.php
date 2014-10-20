@@ -22,7 +22,7 @@ if(!isset($_SESSION['game'])) {
  	<div id="gameContainer">
  		<div id="infoContainer">
  			Credits Left:
- 		<br>	Bet amount: 
+ 			Bet amount: 
  		</div>
 		<div id="cardContainer"></div>
 		<div id="controlsContainer">
