@@ -9,7 +9,6 @@ if(!isset($_SESSION['game'])) {
 	$_SESSION['game'] = $game;
 }
 
-//$game = unserialize($_SESSION['game']);
 $game = $_SESSION['game'];
 
 if(isset($_POST['command']) && $_POST['command'] == 'forceRestart') {
