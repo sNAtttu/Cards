@@ -30,6 +30,8 @@ if(!isset($_SESSION['game'])) {
 			<button id="startRoundButton" name="startRoundButton">Deal</button>
 		</div>
 	</div>
+	<hr />
+	<button id="forceRestart">FORCE RESTART</button>
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="scripts.js"></script>
 </body>

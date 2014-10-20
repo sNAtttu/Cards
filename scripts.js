@@ -15,7 +15,16 @@ $(function() {
 
   var playerChosenCards = [];
 
+  $('#forceRestart').on('click', function() {
+    console.log('x');
+    $.post("game_controller.php",
+    {
+      command: 'forceRestart'
+    }
+  )});
+
   $('#startRoundButton').on('click', function() {
+    console.log('y');
      $('#cardContainer').html('');
 
   	 $.post("game_controller.php",
@@ -26,8 +35,8 @@ $(function() {
 	  },
 	  function(data,status){
 	  	if(status === 'success') {
+        
         playerChosenCards = [];
-	  		console.log('success, continuing round ' , data)
          
           for (var i = 0; i < data.gameData.pictures.length; i++ ){
             $('#cardContainer').append('<img src="'+data.gameData.pictures[i]+'" data="'+data.gameData.ids[i]+'" class="picturedCard '+data.playerHasChosenCards+'" />');
