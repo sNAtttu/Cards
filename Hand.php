@@ -10,6 +10,11 @@ class Hand{
 		return $this->cardsInHand;
 	}
 
+	public function clearHand() {
+		$this->cardsInHand = array();
+		$this->cardsInHandAsPictures = array();
+	}
+
 	public function getHandAsPictures() {
 		return $this->cardsInHandAsPictures;
 	}

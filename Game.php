@@ -1,4 +1,5 @@
 <?php
+
 require ('Player.php');
 require ('config.php');
 require ('Deck.php');
@@ -16,6 +17,7 @@ class Game {
 		$this->hand = new Hand();
 		$this->bet = 5;
 		$_SESSION['oneHandDealt'] = false;
+
 	}
 
 	public function startGame() {
@@ -37,7 +39,7 @@ class Game {
 
 	private function handleChangeCards($heldCards) {
 		$_SESSION['oneHandDealt'] = false;
-		return $this->hand->getPlayersHand($this->dealHand($heldCards));
+		return array('gameData' => $this->hand->getPlayersHand($this->dealHand($heldCards)), 'playerHasChosenCards' => false, 'playerData' => $this->player->getAccountBalance());
 		//TODO return new cards including the chosen cards
 	}
 
@@ -47,9 +49,10 @@ class Game {
 		} else {
 			$this->deck->shuffleDeck();
 			$this->bet = $bet;
+			$this->player->spendCredits($bet);
 			$_SESSION['oneHandDealt'] = true;
 
-			return $this->hand->getPlayersHand($this->dealHand(array()));	
+			return array('gameData' => $this->hand->getPlayersHand($this->dealHand(array())), 'playerHasChosenCards' => false, 'playerData' => $this->player->getAccountBalance());	
 		}
 		
 		//return '<br >starting a new round... <br>';
@@ -89,6 +92,7 @@ class Game {
 	}
 
 	private function dealHand($heldCards) {
+		$this->hand->clearHand();
 		return $this->deck->dealCards($heldCards);
 	}
 

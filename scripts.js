@@ -16,7 +16,7 @@ $(function() {
   var playerChosenCards = [];
 
   $('#startRoundButton').on('click', function() {
-    
+     $('#cardContainer').html('');
     console.log('chosen cards ' , playerChosenCards)
 
   	 $.post("game_controller.php",
@@ -29,9 +29,9 @@ $(function() {
 	  	if(status === 'success') {
         playerChosenCards = [];
 	  		console.log('success, continuing round ' , data)
-          $('#cardContainer').html('');
-          for (var i = 0; i < data.pictures.length; i++ ){
-            $('#cardContainer').append('<img src="'+data.pictures[i]+'" data="'+data.ids[i]+'" class="picturedCard" />');
+         
+          for (var i = 0; i < data.gameData.pictures.length; i++ ){
+            $('#cardContainer').append('<img src="'+data.gameData.pictures[i]+'" data="'+data.gameData.ids[i]+'" class="picturedCard" />');
           }
 	  	} else {
         console.log(data, status)

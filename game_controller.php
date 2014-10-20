@@ -1,9 +1,11 @@
 <?php
-session_start();
-header('Content-Type: application/json');
-include ('Game.php');
+require('Game.php');
 
-$game = unserialize($_SESSION['game']);
+header('Content-Type: application/json');
+session_start();
+
+//$game = unserialize($_SESSION['game']);
+$game = $_SESSION['game'];
 
 if(isset($_POST['command']) && $_POST['command'] == 'startNewRound') {
 	$bet = $_POST['bet'];

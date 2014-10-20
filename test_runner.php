@@ -1,13 +1,12 @@
-<?php
-
+<?php 
 require('Game.php');
-session_start();
+session_start(); 
 
-if(!isset($game)) {
+
+if(!isset($_SESSION['game'])) {
 	$game = new Game('Antti', 100);	
+	$_SESSION['game'] = $game;
 }
-
-$_SESSION['game'] = serialize($game);
 ?>
 <!doctype html>
 
