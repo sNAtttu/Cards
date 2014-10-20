@@ -24,7 +24,7 @@ class Game {
 		$_SESSION['oneHandDealt'] = false;
 		$winnings = $this->getRoundWinnings();
 		$this->player->addCredits($winnings);
-		return array('winnings' => $winnings, 'bet' => $bet->getBetStatus(), 'gameData' => $this->hand->getPlayersHand($this->dealHand($heldCards)), 'playerHasChosenCards' => true, 'playerData' => $this->player->getAccountBalance());
+		return array('winnings' => $winnings, 'bet' => $this->getBetStatus(), 'gameData' => $this->hand->getPlayersHand($this->dealHand($heldCards)), 'playerHasChosenCards' => true, 'playerData' => $this->player->getAccountBalance());
 	}
 
 	public function startNewRound($bet, $heldCards) {
