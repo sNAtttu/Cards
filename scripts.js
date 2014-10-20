@@ -17,7 +17,6 @@ $(function() {
 
   $('#startRoundButton').on('click', function() {
      $('#cardContainer').html('');
-    console.log('chosen cards ' , playerChosenCards)
 
   	 $.post("game_controller.php",
 	  {
@@ -36,7 +35,7 @@ $(function() {
           $('#creditsLeft').html(data.playerData);
           $('#betAmount').html(data.bet);
 	  	} else {
-        console.log(data, status)
+        // handle possible errors
       }
 	  });
   });
@@ -44,10 +43,8 @@ $(function() {
    $(document).on("click",".picturedCard.false",function(){ 
         var cardData = $(this).attr('data');
         if(playerChosenCards.indexOf(cardData) === -1) {
-          console.log('adding card')
           playerChosenCards.push(cardData);  
         }
         $(this).toggleClass('chosen');
-        console.log('picture card clicked', cardData)
     });
 });

@@ -1,14 +1,8 @@
 <?php
 
 class Deck {
-	// deck contains 52 cards
-
+	
 	private $cardsUsed = array();
-
-
-	public function __construct() {
-		//$this->cards = $this->createCards();
-	}
 
 	public function shuffleDeck() {
 		$this->cardsUsed = array();

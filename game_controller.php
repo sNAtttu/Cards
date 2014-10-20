@@ -16,7 +16,7 @@ if(isset($_POST['command']) && $_POST['command'] == 'startNewRound') {
 	}
 	
 	if (sizeof($heldCards > 0) ){
-			echo json_encode($game->startNewRound($bet, $heldCards));
+		echo json_encode($game->startNewRound($bet, $heldCards));
 	} else {
 		echo json_encode($game->startNewRound($bet, array()));	
 	}

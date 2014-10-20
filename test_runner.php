@@ -21,13 +21,13 @@ if(!isset($_SESSION['game'])) {
  	<div id="gameContainer">
  		<div id="infoContainer">
  			Credits Left: <span id="creditsLeft"></span> <br />
- 			Bet amount: <span id="betAmount"></span>
+ 			Bet amount: <span id="betAmount"></span> 
  		</div>
 		<div id="cardContainer"></div>
 		<div id="controlsContainer">
 			<input type="text" name="bet" id="bet" placeholder="bet" disabled/> <button id="changeBetButton">Change bet</button>
 			<input type="number" name="credits" id="credits"><button id="addCredits">Add credits</button>
-			<button id="startRoundButton" name="startRoundButton">Start</button>
+			<button id="startRoundButton" name="startRoundButton">Deal</button>
 		</div>
 	</div>
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>

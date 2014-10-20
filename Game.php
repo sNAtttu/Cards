@@ -24,7 +24,7 @@ class Game {
 		$_SESSION['oneHandDealt'] = false;
 		$winnings = $this->getRoundWinnings();
 		$this->player->addCredits($winnings);
-		return array('winnings' => $winnings, 'bet' => $bet, 'gameData' => $this->hand->getPlayersHand($this->dealHand($heldCards)), 'playerHasChosenCards' => true, 'playerData' => $this->player->getAccountBalance());
+		return array('winnings' => $winnings, 'bet' => $bet->getBetStatus(), 'gameData' => $this->hand->getPlayersHand($this->dealHand($heldCards)), 'playerHasChosenCards' => true, 'playerData' => $this->player->getAccountBalance());
 	}
 
 	public function startNewRound($bet, $heldCards) {
@@ -36,7 +36,7 @@ class Game {
 			$this->player->spendCredits($bet);
 			$_SESSION['oneHandDealt'] = true;
 
-			return array('bet' => $bet, 'gameData' => $this->hand->getPlayersHand($this->dealHand(array())), 'playerHasChosenCards' => false, 'playerData' => $this->player->getAccountBalance());	
+			return array('bet' => $this->getBetStatus(), 'gameData' => $this->hand->getPlayersHand($this->dealHand(array())), 'playerHasChosenCards' => false, 'playerData' => $this->player->getAccountBalance());	
 		}
 	}
 
@@ -44,15 +44,7 @@ class Game {
 		return $this->bet;
 	}
 
-	public function endGame() {
-
-	}
-
 	private function getRoundWinnings() {
-
-		//this just checks for a pair
-
-		// THIS IS JUST AN EXAMPLE
 		$tempCardValues = array();
 
 		foreach ($this->hand->getHand() as $card) {

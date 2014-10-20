@@ -13,9 +13,7 @@ class Player {
 	}
 	
 	public function addCredits($amount) {
-		
 		$this->credits += $amount;
-		
 	}
 	
 	public function getAccountBalance(){
