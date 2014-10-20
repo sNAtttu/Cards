@@ -11,6 +11,6 @@ if(isset($_POST['command']) && $_POST['command'] == 'startNewRound') {
 }
 
 if(isset($_POST['command']) && $_POST['command'] == 'changeCards') {
-	$changedCards = $_POST['changedCards'];
-	echo json_encode($game->startNewRound($bet, $changedCards));
+	$heldCards = $_POST['heldCards'];
+	echo json_encode($game->startNewRound($bet, $heldCards));
 }
