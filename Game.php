@@ -20,22 +20,23 @@ class Game {
 
 	}
 
-	private function handleChangeCards($heldCards) {
+	private function handleChangeCards($bet, $heldCards) {
 		$_SESSION['oneHandDealt'] = false;
-		return array('gameData' => $this->hand->getPlayersHand($this->dealHand($heldCards)), 'playerHasChosenCards' => true, 'playerData' => $this->player->getAccountBalance());
-		//TODO return new cards including the chosen cards
+		$winnings = $this->getRoundWinnings();
+		$this->player->addCredits($winnings);
+		return array('winnings' => $winnings, 'bet' => $bet, 'gameData' => $this->hand->getPlayersHand($this->dealHand($heldCards)), 'playerHasChosenCards' => true, 'playerData' => $this->player->getAccountBalance());
 	}
 
 	public function startNewRound($bet, $heldCards) {
 		if($_SESSION['oneHandDealt'] == true) {
-			return $this->handleChangeCards($heldCards);
+			return $this->handleChangeCards($bet, $heldCards);
 		} else {
 			$this->deck->shuffleDeck();
 			$this->bet = $bet;
 			$this->player->spendCredits($bet);
 			$_SESSION['oneHandDealt'] = true;
 
-			return array('gameData' => $this->hand->getPlayersHand($this->dealHand(array())), 'playerHasChosenCards' => false, 'playerData' => $this->player->getAccountBalance());	
+			return array('bet' => $bet, 'gameData' => $this->hand->getPlayersHand($this->dealHand(array())), 'playerHasChosenCards' => false, 'playerData' => $this->player->getAccountBalance());	
 		}
 	}
 
@@ -53,13 +54,14 @@ class Game {
 
 		// THIS IS JUST AN EXAMPLE
 		$tempCardValues = array();
+
 		foreach ($this->hand->getHand() as $card) {
-			
-			if(in_array($card->getRank(), $tempCardValues)) {
+			$tempCard = explode("-", $card);
+			if(in_array($tempCard[1], $tempCardValues)) {
 				return 10;
 			}
 
-			array_push($tempCardValues, $card->getRank());
+			array_push($tempCardValues, $tempCard[1]);
 		}
 		return 0;
 	}

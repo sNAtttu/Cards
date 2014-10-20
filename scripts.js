@@ -34,6 +34,7 @@ $(function() {
             $('#cardContainer').append('<img src="'+data.gameData.pictures[i]+'" data="'+data.gameData.ids[i]+'" class="picturedCard '+data.playerHasChosenCards+'" />');
           }
           $('#creditsLeft').html(data.playerData);
+          $('#betAmount').html(data.bet);
 	  	} else {
         console.log(data, status)
       }
