@@ -20,23 +20,6 @@ class Game {
 
 	}
 
-	public function startGame() {
-		/*
-		echo 'starting game... <br>';
-		echo 'creating new player... <br>';
-		var_dump($this->player);
-		echo '<br >creating new deck... <br>';
-		var_dump($this->deck);
-
-		// while isGameRunnable
-
-			$this->startNewRound();
-			echo "<br> yay, player has " . $this->player->getAccountBalance()  . " euros!";
-			*/
-
-
-	}
-
 	private function handleChangeCards($heldCards) {
 		$_SESSION['oneHandDealt'] = false;
 		return array('gameData' => $this->hand->getPlayersHand($this->dealHand($heldCards)), 'playerHasChosenCards' => true, 'playerData' => $this->player->getAccountBalance());
@@ -54,16 +37,6 @@ class Game {
 
 			return array('gameData' => $this->hand->getPlayersHand($this->dealHand(array())), 'playerHasChosenCards' => false, 'playerData' => $this->player->getAccountBalance());	
 		}
-		
-		//return '<br >starting a new round... <br>';
-		//$this->hand->setHand($this->dealHand());
-		//do something here
-
-		//change player's cards
-
-		// finally...
-		//echo '<br> Checking round winnings: <br>';
-		//$this->player->addCredits($this->getRoundWinnings());
 	}
 
 	public function getBetStatus() {

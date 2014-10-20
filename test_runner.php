@@ -2,7 +2,6 @@
 require('Game.php');
 session_start(); 
 
-
 if(!isset($_SESSION['game'])) {
 	$game = new Game('Antti', 100);	
 	$_SESSION['game'] = $game;
@@ -21,7 +20,7 @@ if(!isset($_SESSION['game'])) {
 	<hr />
  	<div id="gameContainer">
  		<div id="infoContainer">
- 			Credits Left:
+ 			Credits Left: <span id="creditsLeft"></span>
  			Bet amount: 
  		</div>
 		<div id="cardContainer"></div>

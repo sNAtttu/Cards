@@ -33,6 +33,7 @@ $(function() {
           for (var i = 0; i < data.gameData.pictures.length; i++ ){
             $('#cardContainer').append('<img src="'+data.gameData.pictures[i]+'" data="'+data.gameData.ids[i]+'" class="picturedCard '+data.playerHasChosenCards+'" />');
           }
+          $('#creditsLeft').html(data.playerData);
 	  	} else {
         console.log(data, status)
       }
