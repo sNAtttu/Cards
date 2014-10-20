@@ -17,14 +17,14 @@ class Game {
 		$this->hand = new Hand();
 		$this->bet = 5;
 		$_SESSION['oneHandDealt'] = false;
-
 	}
 
 	private function handleChangeCards($bet, $heldCards) {
 		$_SESSION['oneHandDealt'] = false;
+		$tempHand = $this->hand->getPlayersHand($this->dealHand($heldCards));
 		$winnings = $this->getRoundWinnings();
 		$this->player->addCredits($winnings);
-		return array('winnings' => $winnings, 'bet' => $this->getBetStatus(), 'gameData' => $this->hand->getPlayersHand($this->dealHand($heldCards)), 'playerHasChosenCards' => true, 'playerData' => $this->player->getAccountBalance());
+		return array('winnings' => $winnings, 'bet' => $this->getBetStatus(), 'gameData' => $tempHand, 'playerHasChosenCards' => true, 'playerData' => $this->player->getAccountBalance());
 	}
 
 	public function startNewRound($bet, $heldCards) {
@@ -35,8 +35,9 @@ class Game {
 			$this->bet = $bet;
 			$this->player->spendCredits($bet);
 			$_SESSION['oneHandDealt'] = true;
+			$tempHand = $this->hand->getPlayersHand($this->dealHand(array()));
 
-			return array('bet' => $this->getBetStatus(), 'gameData' => $this->hand->getPlayersHand($this->dealHand(array())), 'playerHasChosenCards' => false, 'playerData' => $this->player->getAccountBalance());	
+			return array('bet' => $this->getBetStatus(), 'gameData' => $tempHand, 'playerHasChosenCards' => false, 'playerData' => $this->player->getAccountBalance());	
 		}
 	}
 

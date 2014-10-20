@@ -16,7 +16,6 @@ $(function() {
   var playerChosenCards = [];
 
   $('#forceRestart').on('click', function() {
-    console.log('x');
     $.post("game_controller.php",
     {
       command: 'forceRestart'
@@ -24,8 +23,8 @@ $(function() {
   )});
 
   $('#startRoundButton').on('click', function() {
-    console.log('y');
      $('#cardContainer').html('');
+     $('#winInfo').html('');
 
   	 $.post("game_controller.php",
 	  {
@@ -43,6 +42,10 @@ $(function() {
           }
           $('#creditsLeft').html(data.playerData);
           $('#betAmount').html(data.bet);
+          if(data.winnings > 0 ) {
+            $('#winInfo').html('you is wins ' + data.winnings + ' with someshit');  
+          }
+          
 	  	} else {
         // handle possible errors
       }
