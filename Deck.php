@@ -20,7 +20,6 @@ class Deck {
 		if(isset($heldCards) && sizeof($heldCards) > 0) {
 
 			foreach ($heldCards as $heldCard) {
-
 				$tempSplit = explode("-", $heldCard);
 				$tempCardValue = [intval($tempSplit[0]) => intval($tempSplit[1])];
 				array_push($temp, $tempCardValue);
@@ -28,7 +27,6 @@ class Deck {
 			}
 		}
 			
-
 		while (true) {
 			$tempRace = unserialize(RACES)[rand(0,3)];
 			$tempRank = rand(1,13);
