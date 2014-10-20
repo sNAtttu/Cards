@@ -13,17 +13,12 @@ $(function() {
   	 $('#bet').val(newBet);
   });
 
-  $('#addCredits').on('click',function(){
-  var credits = parseInt($('#credits').val());
-  console.log('Credits added: '+credits+' euros');
-  });
-
   var playerChosenCards = [];
 
   $('#startRoundButton').on('click', function() {
     
     console.log('chosen cards ' , playerChosenCards)
-  	console.log('starting a round', $('#cardContainer').children());
+
   	 $.post("game_controller.php",
 	  {
 	    bet: parseInt($('#bet').val()),
@@ -33,8 +28,8 @@ $(function() {
 	  function(data,status){
 	  	if(status === 'success') {
 	  		console.log('success, continuing round ' , data)
+          $('#cardContainer').html('');
           for (var i = 0; i < data.pictures.length; i++ ){
-
             $('#cardContainer').append('<img src="'+data.pictures[i]+'" data="'+data.ids[i]+'" class="picturedCard" />');
           }
 	  	} else {
