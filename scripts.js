@@ -43,7 +43,7 @@ $(function() {
           $('#creditsLeft').html(data.playerData);
           $('#betAmount').html(data.bet);
           if(data.winnings > 0 ) {
-            $('#winInfo').html('you is wins ' + data.winnings + ' with someshit');  
+            $('#winInfo').html('You win: ' + data.winnings + '!');  
           }
           
 	  	} else {
