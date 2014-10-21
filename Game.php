@@ -45,15 +45,40 @@ class Game {
 		return $this->bet;
 	}
 	
-	private function checkFlush() {
+	private function makeRaceHand(){
 		$tempCardValues = array();
-		
+	
 		foreach($this->hand->getHand() as $card){
-			$tempCard = explode("-", $card);
-			array_push($tempCardValues, $tempCard[0]);
+		$tempCard = explode("-", $card);
+		array_push($tempCardValues, $tempCard[0]);
 		}
+		return $tempCardValues;
+	}
+	
+	private function makeRankHand(){
+		$tempCardValues = array();
+	
+		foreach($this->hand->getHand() as $card){
+		$tempCard = explode("-", $card);
+		array_push($tempCardValues, $tempCard[1]);
+		}
+		return $tempCardValues;
+	}
+	
+	private function checkFlush() {
 		
-		if (count(array_unique($tempCardValues)) == 1) {
+		$hand = $this->makeRaceHand();
+		
+		if (count(array_unique($hand)) == 1) {
+			return true;
+		}
+	}
+	
+	private function checkStraight(){
+		
+		$hand = $this->makeRankHand();
+		
+		if ((count(array_unique($hand)) == 5) and (max($hand)-min($hand)) == 4) {
 			return true;
 		}
 		
@@ -68,7 +93,10 @@ class Game {
 			
 			if($this->checkFlush() == true) {
 				return ($this->bet * $winFactor['Flush']);
-			}			
+			}
+			if($this->checkStraight() == true) {
+				return ($this->bet * $winFactor['Straight']);
+			}	
 			elseif(in_array($tempCard[1], $tempCardValues)) {
 				return ($this->bet * $winFactor['One pair']);
 			}
