@@ -33,6 +33,7 @@ $(function() {
   $('#startRoundButton').on('click', function() {
      $('#cardContainer').html('');
      $('#winInfo').html('');
+	 $('#winName').html('');
 
   	 $.post("game_controller.php",
 	  {
@@ -51,7 +52,8 @@ $(function() {
           $('#creditsLeft').html(data.playerData);
           $('#betAmount').html(data.bet);
           if(data.winnings > 0 ) {
-            $('#winInfo').html('You win: ' + data.winnings + '!');  
+            $('#winInfo').html('You win: ' + data.winnings + '!');
+			$('#winName').html('Your hand: ' + data.winName + '!');
           }
           
 	  	} else {

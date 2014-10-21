@@ -23,8 +23,8 @@ class Game {
 		$_SESSION['oneHandDealt'] = false;
 		$tempHand = $this->hand->getPlayersHand($this->dealHand($heldCards));
 		$winnings = $this->getRoundWinnings();
-		$this->player->addCredits($winnings);
-		return array('winnings' => $winnings, 'bet' => $this->getBetStatus(), 'gameData' => $tempHand, 'playerHasChosenCards' => true, 'playerData' => $this->player->getAccountBalance());
+		$this->player->addCredits($winnings[0]);
+		return array('winnings' => $winnings[0],'winName' => $winnings[1], 'bet' => $this->getBetStatus(), 'gameData' => $tempHand, 'playerHasChosenCards' => true, 'playerData' => $this->player->getAccountBalance());
 	}
 
 	public function startNewRound($bet, $heldCards) {
@@ -151,34 +151,34 @@ class Game {
 		$tempCardValues = array();
 		$winFactor = unserialize(WINNINGS);
 		
-		foreach ($this->hand->getHand() as $card) {
+		foreach ($winFactor as $key => $value) {
 			
 			if($this->checkRoyalFlush() == true){
-				return ($this->bet * $winFactor['Royal flush']);
+				return array(($this->bet * $winFactor['Royal flush']),"Royal Flush!");;
 			}
 			elseif($this->checkStraightFlush() == true){
-				return($this->bet * $winFactor['Straight flush']);
+				return array(($this->bet * $winFactor['Straight flush']),"Straight Flush!");;
 			}
 			elseif($this->checkFours() == true){
-				return($this->bet * $winFactor['Four of a kind']);
+				return array(($this->bet * $winFactor['Four of a kind']),"Four of a kind!");;
 			}
 			elseif($this->checkFullhouse() == true){
-				return($this->bet * $winFactor['Full house']);
+				return array(($this->bet * $winFactor['Full house']),"OMG FULL HOUSE!");;
 			}
 			elseif($this->checkFlush() == true) {
-				return ($this->bet * $winFactor['Flush']);
+				return array(($this->bet * $winFactor['Flush']),"Flush!");;
 			}
 			elseif($this->checkStraight() == true) {
-				return ($this->bet * $winFactor['Straight']);
+				return array(($this->bet * $winFactor['Straight']),"Straight!");
 			}	
 			elseif($this->checkThrees() == true){
-				return ($this->bet * $winFactor['Three of a kind']);
+				return array(($this->bet * $winFactor['Three of a kind']),"Three of a kind!");
 				}
 			elseif($this->checkTwoPairs() == true){
-				return($this->bet * $winFactor['Two pair']);
+				return array(($this->bet * $winFactor['Two pair']),"Two pairs!");
 			}
 			elseif($this->checkPairs() == true) {
-				return ($this->bet * $winFactor['One pair']);
+				return array(($this->bet * $winFactor['One pair']),"One pair -.-");
 			}
 		}
 		return 0;
