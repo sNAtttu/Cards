@@ -92,12 +92,42 @@ class Game {
 		}
 	}
 	
+	private function checkThrees() {
+		$hand = $this->makeRankHand();
+		
+		if(count(array_unique($hand)) == 3) {
+			return true;
+		}
+	
+	}
+	
+	private function checkFullhouse(){
+		$hand = $this->makeRankHand();
+		
+		if((count(array_unique($hand)) == 2) and $this->checkThrees() == true){
+			return true;
+		}
+	
+	}
+	
+	private function checkPairs(){
+		
+		$tempCardValues = array();
+	
+		foreach($this->hand->getHand() as $card){
+			$tempCard = explode("-", $card);
+			if(in_array($tempCard[1], $tempCardValues)) {
+					return true;
+				}
+			array_push($tempCardValues, $tempCard[1]);
+		}
+	}
+	
 	private function getRoundWinnings() {
 		$tempCardValues = array();
 		$winFactor = unserialize(WINNINGS);
 		
 		foreach ($this->hand->getHand() as $card) {
-			$tempCard = explode("-", $card);
 			
 			if($this->checkFours() == true){
 				return($this->bet * $winFactor['Four of a kind']);
@@ -108,11 +138,9 @@ class Game {
 			elseif($this->checkStraight() == true) {
 				return ($this->bet * $winFactor['Straight']);
 			}	
-			elseif(in_array($tempCard[1], $tempCardValues)) {
+			elseif($this->checkPairs() == true) {
 				return ($this->bet * $winFactor['One pair']);
 			}
-
-			array_push($tempCardValues, $tempCard[1]);
 		}
 		return 0;
 	}
