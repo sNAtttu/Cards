@@ -84,6 +84,14 @@ class Game {
 		
 	}
 	
+	private function checkFours(){
+		$hand = $this->makeRankHand();
+		
+		if(count(array_unique($hand)) == 2){
+			return true;
+		}
+	}
+	
 	private function getRoundWinnings() {
 		$tempCardValues = array();
 		$winFactor = unserialize(WINNINGS);
@@ -91,10 +99,13 @@ class Game {
 		foreach ($this->hand->getHand() as $card) {
 			$tempCard = explode("-", $card);
 			
-			if($this->checkFlush() == true) {
+			if($this->checkFours() == true){
+				return($this->bet * $winFactor['Four of a kind']);
+			}
+			elseif($this->checkFlush() == true) {
 				return ($this->bet * $winFactor['Flush']);
 			}
-			if($this->checkStraight() == true) {
+			elseif($this->checkStraight() == true) {
 				return ($this->bet * $winFactor['Straight']);
 			}	
 			elseif(in_array($tempCard[1], $tempCardValues)) {
