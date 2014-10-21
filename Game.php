@@ -66,27 +66,21 @@ class Game {
 	}
 	
 	private function checkFlush() {
-		
 		$hand = $this->makeRaceHand();
-		
 		if (count(array_unique($hand)) == 1) {
 			return true;
 		}
 	}
 	
 	private function checkStraight(){
-		
-		$hand = $this->makeRankHand();
-		
+		$hand = $this->makeRankHand();	
 		if ((count(array_unique($hand)) == 5) and (max($hand)-min($hand)) == 4) {
 			return true;
-		}
-		
+		}	
 	}
 	
 	private function checkRoyalFlush(){
-		$hand = $this->makeRankHand();
-		
+		$hand = $this->makeRankHand();	
 		if(min($hand) == 9){
 			if($this->checkFlush() == true and $this->checkStraight() == true){
 				return true;
@@ -104,7 +98,6 @@ class Game {
 	
 	private function checkFours(){
 		$hand = $this->makeRankHand();
-		
 		if(count(array_unique($hand)) == 2){
 			return true;
 		}
@@ -131,7 +124,6 @@ class Game {
 	
 	private function checkTwoPairs(){
 		$hand = $this->makeRankHand();
-		
 		if(count(array_unique($hand)) == 3 and $this->checkThrees() == false){
 			return true;
 		}
@@ -139,17 +131,13 @@ class Game {
 	
 	private function checkFullhouse(){
 		$hand = $this->makeRankHand();
-		
 		if((count(array_unique($hand)) == 2) and $this->checkThrees() == true){
 			return true;
 		}
-	
 	}
 	
 	private function checkPairs(){
-		
 		$tempCardValues = array();
-	
 		foreach($this->hand->getHand() as $card){
 			$tempCard = explode("-", $card);
 			if(in_array($tempCard[1], $tempCardValues)) {
