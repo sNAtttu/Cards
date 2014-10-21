@@ -84,6 +84,12 @@ class Game {
 		
 	}
 	
+	private function checkStraightFlush() {
+		if($this->checkStraight() == true and $this->checkFlush() == true) {
+			return true;
+		}
+	}
+	
 	private function checkFours(){
 		$hand = $this->makeRankHand();
 		
@@ -129,7 +135,10 @@ class Game {
 		
 		foreach ($this->hand->getHand() as $card) {
 			
-			if($this->checkFours() == true){
+			if($this->checkStraightFlush() == true){
+				return($this->bet * $winFactor['Straight flush']);
+			}
+			elseif($this->checkFours() == true){
 				return($this->bet * $winFactor['Four of a kind']);
 			}
 			elseif($this->checkFlush() == true) {
