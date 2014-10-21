@@ -1,5 +1,5 @@
 <?php
-//asd
+
 class Card {
 
 	private $race;

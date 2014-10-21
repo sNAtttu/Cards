@@ -11,8 +11,6 @@
 		'Flush' 			=> 20,
 		'Straight' 			=> 10,
 		'Three of a kind' 	=> 5,
-		'Two pair' 			=> 2,
-		'One pair' 			=> 1
-	))
-
-);
+		'Two pair' 			=> 4,
+		'One pair' 			=> 2
+	)));

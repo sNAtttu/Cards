@@ -44,14 +44,33 @@ class Game {
 	public function getBetStatus() {
 		return $this->bet;
 	}
-
+	
+	private function checkFlush() {
+		$tempCardValues = array();
+		
+		foreach($this->hand->getHand() as $card){
+			$tempCard = explode("-", $card);
+			array_push($tempCardValues, $tempCard[0]);
+		}
+		
+		if (count(array_unique($tempCardValues)) == 1) {
+			return true;
+		}
+		
+	}
+	
 	private function getRoundWinnings() {
 		$tempCardValues = array();
-
+		$winFactor = unserialize(WINNINGS);
+		
 		foreach ($this->hand->getHand() as $card) {
 			$tempCard = explode("-", $card);
-			if(in_array($tempCard[1], $tempCardValues)) {
-				return 10;
+			
+			if($this->checkFlush() == true) {
+				return ($this->bet * $winFactor['Flush']);
+			}			
+			elseif(in_array($tempCard[1], $tempCardValues)) {
+				return ($this->bet * $winFactor['One pair']);
 			}
 
 			array_push($tempCardValues, $tempCard[1]);
