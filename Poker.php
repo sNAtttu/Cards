@@ -3,7 +3,7 @@ require('Game.php');
 session_start(); 
 
 if(!isset($_SESSION['game'])) {
-	$game = new Game('Antti', 100);	
+	$game = new Game('Pelaaja', 100);	
 	$_SESSION['game'] = $game;
 }
 ?>
@@ -27,7 +27,6 @@ if(!isset($_SESSION['game'])) {
 		<div id="cardContainer"></div>
 		<div id="controlsContainer">
 			<input type="text" name="bet" id="bet" placeholder="bet" disabled/> <button id="changeBetButton">Change bet</button>
-			<input type="number" name="credits" id="credits"><button id="addCredits">Add credits</button>
 			<button id="startRoundButton" name="startRoundButton">Deal</button>
 		</div>
 	</div>

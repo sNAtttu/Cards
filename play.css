@@ -1,3 +1,6 @@
+body {
+    background-color: #E0E0E0;
+}
 div.center{    
 	margin: 0 auto;
 	background-color:#b0c4de;
@@ -7,10 +10,6 @@ div.center{
 }
 table{
 	margin: 0 auto;
-	border-width:2px;
-	border-style:outset;
-	border-collapse: separate;
-	border-spacing: 10pt 5pt;
 }
 td {
 border-style:outset;
@@ -20,24 +19,26 @@ border-style:outset;
 	padding-top: 64px;
 	width: 100%;
 	max-width: 960px;
-	height: 520px;
-	border: 1px solid black;
+	height: 400px;
 	margin: 0 auto;
 	padding: 8px;
 }
 
 #infoContainer {
 	width: 100%;
-	height: 10%;
+	height: 15%;
+	background-color:#E0E0E0;
 }
 #cardContainer {
 	width: 100%;
 	height: 60%;
+	background-color:#E1E1E1;
 }
 
 #controlsContainer {
 	width: 100%;
 	height: 30%;
+	background-color:#E0E0E0;
 }
 
 .chosen {

@@ -21,6 +21,14 @@ $(function() {
       command: 'forceRestart'
     }
   )});
+  
+    $('#addCredits').on('click', function() {
+    $.post("game_controller.php",
+    {
+	  credits: parseInt($('#credits')),
+      command: 'addCredits'
+    }
+  )});
 
   $('#startRoundButton').on('click', function() {
      $('#cardContainer').html('');
@@ -54,9 +62,13 @@ $(function() {
 
    $(document).on("click",".picturedCard.false",function(){ 
         var cardData = $(this).attr('data');
-        if(playerChosenCards.indexOf(cardData) === -1) {
-          playerChosenCards.push(cardData);  
-        }
-        $(this).toggleClass('chosen');
-    });
+		try{
+			if(playerChosenCards.indexOf(cardData) === -1) {
+			  playerChosenCards.push(cardData);  
+			}
+			$(this).toggleClass('chosen');
+			} catch(err){
+				document.getElementById("#cardContainer").innerHTML = err.message;
+			}
+			});
 });
