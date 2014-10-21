@@ -84,6 +84,18 @@ class Game {
 		
 	}
 	
+	private function checkRoyalFlush(){
+		$hand = $this->makeRankHand();
+		
+		if(min($hand) == 9){
+			if($this->checkFlush() == true and $this->checkStraight() == true){
+				return true;
+			}
+			else{return false;}
+		}
+		else{return false;}
+	}
+	
 	private function checkStraightFlush() {
 		if($this->checkStraight() == true and $this->checkFlush() == true) {
 			return true;
@@ -99,12 +111,30 @@ class Game {
 	}
 	
 	private function checkThrees() {
-		$hand = $this->makeRankHand();
-		
-		if(count(array_unique($hand)) == 3) {
-			return true;
+		$tempCardValues = array();
+		$index = 0;
+		foreach($this->hand->getHand() as $card){
+			$tempCard = explode("-", $card);
+			if(in_array($tempCard[1], $tempCardValues)) {
+				$index += 1;
+				if($index == 2){
+					return true;
+					}
+				}
+			else {
+				return false;
+				}
+			array_push($tempCardValues, $tempCard[1]);
 		}
 	
+	}
+	
+	private function checkTwoPairs(){
+		$hand = $this->makeRankHand();
+		
+		if(count(array_unique($hand)) == 3 and $this->checkThrees() == false){
+			return true;
+		}
 	}
 	
 	private function checkFullhouse(){
@@ -135,11 +165,17 @@ class Game {
 		
 		foreach ($this->hand->getHand() as $card) {
 			
-			if($this->checkStraightFlush() == true){
+			if($this->checkRoyalFlush() == true){
+				return ($this->bet * $winFactor['Royal flush']);
+			}
+			elseif($this->checkStraightFlush() == true){
 				return($this->bet * $winFactor['Straight flush']);
 			}
 			elseif($this->checkFours() == true){
 				return($this->bet * $winFactor['Four of a kind']);
+			}
+			elseif($this->checkFullhouse() == true){
+				return($this->bet * $winFactor['Full house']);
 			}
 			elseif($this->checkFlush() == true) {
 				return ($this->bet * $winFactor['Flush']);
@@ -147,6 +183,12 @@ class Game {
 			elseif($this->checkStraight() == true) {
 				return ($this->bet * $winFactor['Straight']);
 			}	
+			elseif($this->checkThrees() == true){
+				return ($this->bet * $winFactor['Three of a kind']);
+				}
+			elseif($this->checkTwoPairs() == true){
+				return($this->bet * $winFactor['Two pair']);
+			}
 			elseif($this->checkPairs() == true) {
 				return ($this->bet * $winFactor['One pair']);
 			}
